@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.Scanner;
 
-
 public class CLI implements Runnable {
     private Net net;
     private boolean takingInput = false;
@@ -80,6 +79,7 @@ public class CLI implements Runnable {
         @Override
         public void connected(InetSocketAddress address) {
             System.out.println("Welcome to HangMan! Enter 'start' to begin a new game, or 'quit' to exit.");
+            showInputSign();
         }
 
         @Override

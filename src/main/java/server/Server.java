@@ -1,6 +1,5 @@
 package server;
 
-import client.Client;
 import shared.Constants;
 import shared.Parser;
 import shared.Parser.ContentType;
@@ -17,7 +16,6 @@ import java.util.ArrayDeque;
 import java.util.Iterator;
 import java.util.Queue;
 import java.util.StringJoiner;
-import java.util.concurrent.ForkJoinPool;
 
 public class Server {
     private static final int LINGER_TIME = 5000;

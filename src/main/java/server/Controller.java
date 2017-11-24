@@ -1,22 +1,19 @@
 package server;
 
-
-import com.sun.tools.internal.xjc.BadCommandLineException;
-import shared.Constants;
-import shared.GameSnapshot;
 import server.Hangman.Hangman;
 import shared.Parser;
-
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.UUID;
 
 class Controller {
     private Hangman hangman;
     private String[] commands = new String[]{"start","guess","quit"};
+    private String uuid;
 
     Controller () {
         try {
             this.hangman = new Hangman();
+            this.uuid = UUID.randomUUID().toString();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -24,6 +21,7 @@ class Controller {
 
     Response parseCommand (String cmd) throws ErroneousInputException,InternalError {
         String[] command = cmd.split(" ");
+        System.out.println("User " + uuid + " issued command <" + cmd + ">");
         switch (command[0]) {
             case "start":
                 return new Response(Parser.ContentType.STARTED, this.hangman.start().toString());
